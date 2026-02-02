@@ -45,6 +45,13 @@ body {
     min-height: 60vh;
 }
 
+.hero-logo {
+    max-width: 180px; /* Dostosuj rozmiar logo */
+    height: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* Cień dla lepszej widoczności na tle */
+}
+
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 15px;
@@ -283,27 +290,86 @@ footer {
     text-align: center;
 }
 
-/* Style dla sekcji partnerów w stopce */
-.partners-logos {
+footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: var(--accent);
+}
+
+/* Style dla sekcji logotypów (Zaufali nam / Portfolio) */
+.trusted-logos {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
 }
 
-.partners-logos img {
-    transition: var(--transition);
+.trusted-logos img {
+    height: 70px;
+    width: 70px;
+    object-fit: contain;
     border-radius: 50%;
     background-color: var(--white);
-    padding: 10px;
-    width: 70px !important;  /* Wymuszenie szerokości */
-    height: 70px !important; /* Wymuszenie wysokości (nadpisuje inline style) */
-    object-fit: contain;     /* Skalowanie logo wewnątrz koła */
+    padding: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    filter: grayscale(100%);
+    opacity: 0.9;
+    transition: all 0.3s ease;
 }
 
-.partners-logos img:hover {
+.trusted-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
     transform: scale(1.1);
+    box-shadow: 0 0 20px var(--hover-color);
+}
+
+/* Custom Tooltip (Dymek z opisem) */
+.logo-tooltip {
+    position: relative;
+    display: inline-block;
+}
+.logo-tooltip::before, .logo-tooltip::after {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+    z-index: 1100;
+}
+.logo-tooltip::after {
+    content: attr(data-tooltip);
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-bottom: 12px;
+}
+.logo-tooltip::before {
+    content: '';
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    border: 6px solid transparent;
+    border-top-color: #333;
+    margin-bottom: 0px;
+}
+.logo-tooltip:hover::before, .logo-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
 
 @media (max-width: 600px) {
@@ -354,3 +420,13 @@ footer {
     border-color: var(--white);
     color: var(--white);
 }
+
+/* Potwierdzenie wysłania formularza */
+.form-success {
+    text-align: center;
+    padding: 20px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.form-success h3 { color: var(--white); margin-bottom: 15px; font-size: 1.8rem; }
+.form-success p { color: var(--light); font-size: 1.1rem; }
+@keyframes popIn { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }

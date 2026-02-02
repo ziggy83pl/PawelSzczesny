@@ -1,7 +1,5 @@
 https://ziggy83pl.github.io/PawelSzczesny/
 
-https://ziggy83pl.github.io/PawelSzczesny/
-
 ---
 
 

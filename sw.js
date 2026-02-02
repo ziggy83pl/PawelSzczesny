@@ -7,7 +7,9 @@ const ASSETS_TO_CACHE = [
     './manifest.json',
     './logo/prodom.webp',
     './logo/rentmaster.png',
-    './logo/doners_kebab.png'
+    './logo/doners_kebab.png',
+    './logo/fivicon.ico',
+    './logo/pawel.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -52,5 +54,4 @@ self.addEventListener('fetch', (event) => {
                 });
             })
     );
-
 });

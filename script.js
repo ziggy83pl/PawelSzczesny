@@ -87,14 +87,28 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    contactForm.innerHTML = `
-                        <div style="text-align: center; padding: 20px;">
-                            <i class="fas fa-check-circle" style="font-size: 3rem; color: #2ecc71; margin-bottom: 20px;"></i>
-                            <h3 style="color: var(--white);">Dziękujemy za wiadomość!</h3>
-                            <p style="color: var(--light);">Skontaktujemy się z Tobą w ciągu 24 godzin.</p>
-                        </div>
+                    const originalChildren = Array.from(contactForm.children);
+                    originalChildren.forEach(child => child.style.display = 'none');
+
+                    const successDiv = document.createElement('div');
+                    successDiv.className = 'form-success';
+                    successDiv.innerHTML = `
+                        <i class="fas fa-check-circle" style="font-size: 3rem; color: #2ecc71; margin-bottom: 20px;"></i>
+                        <h3>Dziękujemy za wiadomość!</h3>
+                        <p>Skontaktujemy się z Tobą w ciągu 24 godzin.</p>
+                        <button type="button" id="new-message-btn" class="btn-main" style="margin-top: 20px;">Wyślij kolejną wiadomość</button>
                     `;
+                    contactForm.appendChild(successDiv);
+
+                    document.getElementById('new-message-btn').addEventListener('click', () => {
+                        successDiv.remove();
+                        originalChildren.forEach(child => child.style.display = '');
+                        contactForm.reset();
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                    });
                 } else {
+                    alert("Wystąpił problem z wysłaniem formularza. Spróbuj ponownie później.");
                     throw new Error('Błąd wysyłki');
                 }
             }).catch(error => {

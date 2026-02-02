@@ -14,6 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pl_PL">
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="logo/fivicon.ico" type="image/x-icon">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -22,11 +23,11 @@
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N5Q4GHC2B"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-4N5Q4GHC2B');
+    gtag('config', 'G-4N5Q4GHC2B');
 </script>
 </head>
 <body>
@@ -128,21 +129,16 @@
     <div class="container" style="text-align: center; padding: 20px 0;">
         <section class="partners-section fade-in" style="margin-bottom: 20px;">
             <h4 style="margin-bottom: 15px;">Współpracujemy z:</h4>
-            <div class="partners-logos">
-                <a href="https://ziggy83pl.github.io/Prodom-budownictwo/" target="_blank"><img src="logo/prodom.webp" alt="Prodom" style="height: 50px; margin: 0 15px; vertical-align: middle;"></a>
-                <a href="https://ziggy83pl.github.io/rentmaster/" target="_blank"><img src="logo/rentmaster.png" alt="Rentmaster" style="height: 50px; margin: 0 15px; vertical-align: middle;"></a>
-                <a href="https://www.facebook.com/DonersLomza?locale=pl_PL" target="_blank"><img src="logo/doners_kebab.png" alt="Doners Kebab" style="height: 50px; margin: 0 15px; vertical-align: middle;"></a>
+            <div id="global-trusted-logos" class="trusted-logos">
+                <!-- Loga ładowane przez portfolio-logos.js -->
             </div>
         </section>
-        <p style="opacity: 0.8; font-size: 0.9em;">&copy; 2024 Paweł Szczęsny - Usługi Ogólnobudowlane</p>
+        <p style="opacity: 0.8; font-size: 0.9em;">&copy; 2026 Paweł Szczęsny - Usługi Ogólnobudowlane | Realizacja: <a href="https://ziggy83pl.github.io/coder/" target="_blank" class="logo-tooltip" data-tooltip="Zamów profesjonalną stronę WWW">Enterprise</a></p>
         <button id="install-btn" class="btn-install" style="display: none;"><i class="fas fa-download"></i> Zainstaluj Aplikację</button>
     </div>
 </footer>
 
 <script src="script.js"></script>
+<script src="portfolio-logos.js"></script>
 </body>
-
 </html>
-
-
-
