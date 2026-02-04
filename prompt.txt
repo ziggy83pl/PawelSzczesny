@@ -1,0 +1,25 @@
+Lista do wykorzystania jako prompt dla nowej strony:
+Wdrożenie PWA (Progressive Web App):
+
+Stwórz plik manifest.json (nazwa, ikony, kolory), aby strona była instalowalna jako aplikacja.
+Dodaj sw.js (Service Worker) do cache'owania plików, aby strona działała w trybie offline (bez internetu).
+Zaimplementuj logikę w JS, która wyświetla przycisk "Zainstaluj aplikację" tylko wtedy, gdy przeglądarka na to pozwala.
+Optymalizacja pod Social Media (Open Graph):
+
+Dodaj meta tagi Open Graph (og:title, og:description, og:image), aby link do strony wyświetlał się z ładnym podglądem i zdjęciem w wiadomościach SMS, Messengerze i na Facebooku.
+Ustaw theme-color, aby pasek przeglądarki na telefonie pasował do kolorystyki strony.
+Nowoczesny Design i UX:
+
+W sekcji Hero zastosuj efekt paralaksy (background-attachment: fixed) dla zdjęcia w tle.
+Dodaj animacje wejścia (np. fade-in), aby elementy pojawiały się płynnie podczas przewijania strony (Intersection Observer).
+Użyj zmiennych CSS (:root) do łatwego zarządzania kolorami i spójności stylu.
+Funkcjonalności Kontaktowe:
+
+Dodaj przycisk "Poleć znajomemu", który wykorzystuje natywne Web Share API (udostępnianie systemowe na telefonach).
+Stwórz formularz kontaktowy wysyłający dane bez przeładowania strony (AJAX/Fetch) z obsługą błędów i komunikatem sukcesu.
+Dodaj skrypt automatycznie formatujący numer telefonu (np. wstawiający spacje co 3 cyfry) w polu input.
+SEO i Analityka:
+
+Dodaj pliki sitemap.xml oraz robots.txt dla robotów wyszukiwarek.
+Zintegruj kod śledzący Google Analytics (GA4).
+Upewnij się, że strona posiada favicon oraz odpowiednie ikony dla urządzeń mobilnych.

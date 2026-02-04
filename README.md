@@ -20,6 +20,7 @@ Profesjonalna strona wizytówka dla usług remontowo-ogrodowych i transportowych
 - **Formatowanie Numeru**: Skrypt automatycznie formatuje numer telefonu podczas wpisywania (np. `515 622 400`).
 - **Web Share API**: Przycisk "Poleć znajomemu" otwiera natywne menu udostępniania w systemie (SMS, Messenger, WhatsApp).
 - **Animacje (Intersection Observer)**: Elementy strony pojawiają się płynnie (`fade-in`) w momencie przewijania do nich.
+- **Dynamiczne Portfolio (`portfolio-logos.js`)**: Skrypt generujący sekcję "Współpracujemy z". Automatycznie wstrzykuje style CSS oraz listę logotypów partnerów, wykluczając logo aktualnej strony.
 
 ### 3. Wygląd i Style (`style.css`)
 - **Zmienne CSS**: Kolorystyka oparta na zmiennych (`:root`) dla łatwej edycji motywu.
@@ -35,6 +36,7 @@ Profesjonalna strona wizytówka dla usług remontowo-ogrodowych i transportowych
 *   `index.html` - Główny plik struktury strony.
 *   `style.css` - Arkusze stylów.
 *   `script.js` - Logika aplikacji.
+*   `portfolio-logos.js` - Skrypt obsługujący sekcję partnerów.
 *   `sw.js` - Service Worker (obsługa cache i offline).
 *   `manifest.json` - Konfiguracja instalacji aplikacji.
 *   `sitemap.xml` / `robots.txt` - Pliki dla robotów wyszukiwarek.
