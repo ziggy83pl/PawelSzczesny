@@ -5,6 +5,8 @@ https://ziggy83pl.github.io/PawelSzczesny/
 
 # Paweł Szczęsny - Strona Wizytówka (PWA)
 
+**Wersja:** 1.0.0
+
 Profesjonalna strona wizytówka dla usług remontowo-ogrodowych i transportowych, zaprojektowana jako Progressive Web App (PWA). Strona jest w pełni responsywna, zoptymalizowana pod SEO i media społecznościowe.
 
 
@@ -66,6 +68,15 @@ Formularz korzysta z serwisu FormSubmit.co. Aby go aktywować:
 1.  Upewnij się, że w `script.js` (sekcja fetch) podany jest poprawny adres email.
 2.  Uruchom stronę i wyślij pierwszą testową wiadomość.
 3.  Odbierz email od FormSubmit i kliknij przycisk potwierdzający aktywację ("Activate").
+
+---
+
+## 📜 Dziennik Zmian (Changelog)
+
+### [1.0.0] - Pierwsze wydanie - 2026-05-22
+- Publikacja strony wizytówki.
+- Integracja PWA, Formularza Kontaktowego i Portfolio.
+- Wdrożenie globalnych skryptów (`portfolio-logos.js`, `magnifier.js`).
 
 ---
 &copy; 2026 Paweł Szczęsny

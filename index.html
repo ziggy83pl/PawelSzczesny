@@ -128,12 +128,14 @@
 <footer>
     <div class="container" style="text-align: center; padding: 20px 0;">
         <section class="partners-section fade-in" style="margin-bottom: 20px;">
-            <h4 style="margin-bottom: 15px;">Współpracujemy z:</h4>
             <div id="global-trusted-logos">
                 <!-- Loga ładowane przez portfolio-logos.js -->
             </div>
         </section>
-        <p style="opacity: 0.8; font-size: 0.9em;">&copy; 2026 Paweł Szczęsny - Usługi Ogólnobudowlane | Realizacja: <a href="https://ziggy83pl.github.io/Enterprise/" target="_blank" class="logo-tooltip" data-tooltip="Zamów profesjonalną stronę WWW">Enterprise</a></p>
+        <div class="footer-info">
+                <p>&copy; 2026 Paweł Szczęsny - Usługi Ogólnobudowlane <span style="font-size: 0.85em; opacity: 0.7;">v1.0.0</span> <span class="footer-separator">|</span></p> 
+            <p>Realizacja: <a href="https://ziggy83pl.github.io/Enterprise/" target="_blank" id="version-text" class="logo-tooltip" data-tooltip="Zamów profesjonalną stronę WWW">Enterprise</a></p>
+        </div>
         <button id="install-btn" class="btn-install" style="display: none;"><i class="fas fa-download"></i> Zainstaluj Aplikację</button>
     </div>
 </footer>
@@ -143,5 +145,6 @@
 
     <!-- Globalne portfolio - skrypt ładowany z GitHub -->
     <script src="https://ziggy83pl.github.io/zasoby/portfolio-logos.js" defer></script>
+    <script src="https://ziggy83pl.github.io/zasoby/magnifier.js" defer></script>
 </body>
 </html>
