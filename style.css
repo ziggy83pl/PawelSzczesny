@@ -15,11 +15,19 @@
     padding: 0;
 }
 
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--light);
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 .container {

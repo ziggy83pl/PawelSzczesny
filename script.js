@@ -1,3 +1,15 @@
+// Zmienna globalna dla zdarzenia instalacji PWA - musi być na zewnątrz
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Zapobiegaj automatycznemu pojawieniu się mini-paska
+    e.preventDefault();
+    deferredPrompt = e;
+    // Spróbuj pokazać przycisk od razu, jeśli element już istnieje
+    const installBtn = document.getElementById('install-btn');
+    if (installBtn) installBtn.style.display = 'inline-block';
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // 1. Płynne przewijanie do kontaktu (Smooth Scroll)
     const callButton = document.querySelector('.btn-main');
@@ -147,19 +159,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 6. Obsługa instalacji PWA (Przycisk "Zainstaluj Aplikację")
-    let deferredPrompt;
     const installBtn = document.getElementById('install-btn');
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Zapobiegaj automatycznemu pojawieniu się mini-paska info na dole (na starszych Chrome)
-        e.preventDefault();
-        // Zapisz zdarzenie, aby użyć go później
-        deferredPrompt = e;
-        // Pokaż przycisk instalacji
-        if (installBtn) {
-            installBtn.style.display = 'inline-block';
-        }
-    });
+    // Jeśli zdarzenie wystąpiło przed załadowaniem DOM (np. bardzo szybkie łącze)
+    if (deferredPrompt && installBtn) {
+        installBtn.style.display = 'inline-block';
+    }
 
     if (installBtn) {
         installBtn.addEventListener('click', (e) => {
