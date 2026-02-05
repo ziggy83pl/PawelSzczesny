@@ -1,6 +1,6 @@
 {
   "name": "Paweł Szczęsny - Usługi Remontowo-Ogrodowe",
-  "short_name": "Paweł Szczęsny",
+  "short_name": "Remonty",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f8f9fa",
@@ -17,4 +17,5 @@
       "type": "image/png"
     }
   ]
+
 }
