@@ -5,7 +5,7 @@ https://pawelszczesnyostroleka.pages.dev/
 
 # Paweł Szczęsny - Strona Wizytówka (PWA)
 
-**Wersja:** 1.0.0
+**Wersja:** 1.1.0
 
 Profesjonalna strona wizytówka dla usług remontowo-ogrodowych i transportowych, zaprojektowana jako Progressive Web App (PWA). Strona jest w pełni responsywna, zoptymalizowana pod SEO i media społecznościowe.
 
@@ -32,6 +32,11 @@ Profesjonalna strona wizytówka dla usług remontowo-ogrodowych i transportowych
 ### 4. SEO i Social Media
 - **Open Graph**: Skonfigurowane meta tagi, aby linki wysyłane w wiadomościach miały ładny podgląd (tytuł, opis, zdjęcie).
 - **Google Analytics**: Zintegrowany kod śledzący GA4.
+
+### 5. Galeria Realizacji (Swiper.js)
+- **Karuzela Zdjęć**: Przeglądanie realizacji za pomocą dotyku lub strzałek.
+- **Lightbox**: Możliwość powiększania zdjęć na pełny ekran po kliknięciu.
+- **Responsywność**: Zdjęcia skalują się zachowując proporcje (`contain`), wyglądając dobrze na każdym ekranie.
 
 ## 🛠️ Struktura Plików
 
@@ -72,6 +77,13 @@ Formularz korzysta z serwisu FormSubmit.co. Aby go aktywować:
 ---
 
 ## 📜 Dziennik Zmian (Changelog)
+
+### [1.1.0] - Galeria i SEO - 2026-05-22
+- Dodano sekcję "Nasze Realizacje" z karuzelą (Swiper.js).
+- Zaimplementowano Lightbox (powiększanie zdjęć na pełny ekran).
+- Zaktualizowano domenę na `pawelszczesnyostroleka.pages.dev`.
+- Dodano pliki `robots.txt`, `sitemap.xml` oraz tag `canonical` dla lepszego SEO.
+- Poprawiono skalowanie zdjęć na dużych monitorach.
 
 ### [1.0.0] - Pierwsze wydanie - 2026-05-22
 - Publikacja strony wizytówki.
