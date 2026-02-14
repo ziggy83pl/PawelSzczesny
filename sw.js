@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pawel-v6';
+const CACHE_NAME = 'pawel-v7';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -56,3 +56,4 @@ self.addEventListener('fetch', (event) => {
     );
 
 });
+
