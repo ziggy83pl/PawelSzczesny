@@ -309,6 +309,62 @@ footer a:hover {
     color: var(--accent);
 }
 
+/* --- Sekcja Galeria (Swiper) --- */
+.gallery-section {
+    text-align: center;
+    margin: 60px 0;
+    padding: 40px 20px;
+    background-color: var(--white);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.gallery-section h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.swiper {
+    width: 100%;
+    max-width: 800px; /* 1. Ograniczenie szerokości dla lepszych proporcji */
+    margin: 0 auto; /* Wyśrodkowanie karuzeli */
+    height: 700px;
+    border-radius: 10px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: var(--white); /* 2. Zmiana tła na białe, aby pasowało do sekcji */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Zmiany dla podpisów i oddalenia: */
+    flex-direction: column; /* Ustawia zdjęcie i tekst w pionie */
+    padding: 10px 10px 40px 10px; /* Odstęp od krawędzi */
+    box-sizing: border-box;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 85%; /* Zmniejszamy wysokość zdjęcia, żeby zrobić miejsce na tekst */
+    object-fit: contain; /* 3. Gwarantuje widoczność całego zdjęcia bez przycinania */
+    border-radius: 5px; /* Lekkie zaokrąglenie rogów zdjęcia wygląda profesjonalnie */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Delikatny cień pod zdjęciem */
+    cursor: pointer; /* Kursor rączki sugeruje klikalność */
+}
+
+.slide-caption {
+    margin-top: 15px;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* --- Footer Layout & Magnifier --- */
 .footer-info {
     display: flex;
@@ -325,6 +381,19 @@ footer a:hover {
     display: inline;
 }
 
+/* Dostosowanie strzałek i paginacji Swipera do kolorystyki strony */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--accent) !important;
+    transition: var(--transition);
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    transform: scale(1.1);
+}
+.swiper-pagination-bullet-active {
+    background: var(--accent) !important;
+}
 @media (max-width: 600px) {
     .hero h1 { font-size: 2.2rem; }
     .subtitle { font-size: 1rem; }
@@ -335,6 +404,9 @@ footer a:hover {
         padding: 10px;
         overflow-wrap: break-word;
         max-width: 100%;
+    }
+    .swiper {
+        height: 500px;
     }
     /* Stopka na telefonie: jeden pod drugim */
     .footer-info {
@@ -389,3 +461,65 @@ footer a:hover {
 .form-success h3 { color: var(--white); margin-bottom: 15px; font-size: 1.8rem; }
 .form-success p { color: var(--light); font-size: 1.1rem; }
 @keyframes popIn { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
+
+/* --- Modal do powiększania zdjęć (Lightbox) --- */
+.image-modal {
+    display: none; /* Ukryty domyślnie */
+    position: fixed;
+    z-index: 10000; /* Musi być nad wszystkim */
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9); /* Ciemne tło */
+    backdrop-filter: blur(5px); /* Rozmycie tła pod spodem */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: auto;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    animation: zoom 0.3s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0.1)}
+    to {transform:scale(1)}
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--accent);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 20px 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+}

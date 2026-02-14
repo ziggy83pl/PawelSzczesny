@@ -10,12 +10,16 @@
 
     <meta property="og:title" content="Paweł Szczęsny - Usługi Remontowo-Ogrodowe">
     <meta property="og:description" content="Potrzebujesz fachowca? Remonty, prace ogrodowe, transport. Sprawdź moją ofertę i skontaktuj się!">
+    <meta property="og:url" content="https://pawelszczesnyostroleka.pages.dev/">
     <meta property="og:image" content="https://images.unsplash.com/photo-1592595896551-12b371d546d5?q=80&w=1200&auto=format&fit=crop">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pl_PL">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="logo/fivicon.ico" type="image/x-icon">
     
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -107,6 +111,46 @@
         </div>
     </section>
 
+    <section class="gallery-section fade-in">
+        <h2>Nasze Realizacje</h2>
+        <!-- Slider main container -->
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <img src="logo/image1.png" alt="Realizacja budowlana">
+                    <p class="slide-caption">Grzanie papy</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="logo/image2.png" alt="Malowanie wnętrz">
+                    <p class="slide-caption">Instalacja płotu</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="logo/image3.png" alt="Transport">
+                    <p class="slide-caption">Budowa ogrodzenia</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="logo/image4.png" alt="Prace ogrodowe">
+                    <p class="slide-caption">Malowanie scian</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="logo/image5.png" alt="Układanie podłogi">
+                    <p class="slide-caption">Zageszczanie gruntu</p>
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+        <p style="font-size: 0.8rem; color: #999; margin-top: 15px;">
+            Zdjęcia mają charakter poglądowy.
+        </p>
+    </section>
+
     <section id="contact" class="contact-box fade-in">
         <h2>Zapraszam do kontaktu!</h2>
         <p>Indywidualne podejście do klienta i rzetelna wycena.</p>
@@ -133,20 +177,26 @@
             </div>
         </section>
         <div class="footer-info">
-                <p>&copy; 2026 Paweł Szczęsny - Usługi Ogólnobudowlane <span style="font-size: 0.85em; opacity: 0.7;">Biznes v1.0.1</span> <span class="footer-separator">|</span></p> 
+                <p>&copy; 2026 Paweł Szczęsny - Usługi Ogólnobudowlane <span style="font-size: 0.85em; opacity: 0.7;">v1.0.1</span> <span class="footer-separator">|</span></p> 
             <p>Realizacja: <a href="https://ziggy83pl.github.io/enterprise/index.html" target="_blank" id="version-text" class="logo-tooltip" data-tooltip="Zamów profesjonalną stronę WWW">Enterprise</a></p>
         </div>
         <button id="install-btn" class="btn-install" style="display: none;"><i class="fas fa-download"></i> Zainstaluj Aplikację</button>
     </div>
 </footer>
 
+<!-- Modal do powiększania zdjęć -->
+<div id="image-modal" class="image-modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="full-image">
+    <div id="caption"></div>
+</div>
+
+<!-- Swiper.js -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
-    <!-- ... reszta twojej strony ... -->
 
-    <!-- Globalne portfolio - skrypt ładowany z GitHub -->
-    <script src="https://ziggy83pl.github.io/zasoby/portfolio-logos.js" defer></script>
-    <script src="https://ziggy83pl.github.io/zasoby/magnifier.js" defer></script>
+<!-- Globalne skrypty -->
+<script src="https://ziggy83pl.github.io/zasoby/portfolio-logos.js" defer></script>
+<script src="https://ziggy83pl.github.io/zasoby/magnifier.js" defer></script>
 </body>
-
 </html>
-

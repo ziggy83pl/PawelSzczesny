@@ -1,4 +1,4 @@
-https://ziggy83pl.github.io/PawelSzczesny/
+https://pawelszczesnyostroleka.pages.dev/
 
 ---
 

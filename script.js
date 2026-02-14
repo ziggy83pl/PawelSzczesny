@@ -178,4 +178,49 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // 7. Inicjalizacja karuzeli zdjęć (Swiper.js)
+    if (typeof Swiper !== 'undefined') {
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    }
+
+    // 8. Obsługa modala (Lightbox) dla galerii
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('full-image');
+    const captionText = document.getElementById('caption');
+    const closeBtn = document.querySelector('.close-modal');
+    const swiperWrapper = document.querySelector('.swiper-wrapper');
+
+    if (modal && swiperWrapper) {
+        // Delegacja zdarzeń - obsługuje też slajdy sklonowane przez pętlę Swipera
+        swiperWrapper.addEventListener('click', function(e) {
+            if (e.target.tagName === 'IMG') {
+                modal.style.display = "block";
+                modalImg.src = e.target.src;
+                // Pobierz podpis z sąsiedniego elementu (jeśli istnieje) lub atrybutu alt
+                const caption = e.target.nextElementSibling;
+                captionText.innerHTML = (caption && caption.classList.contains('slide-caption')) ? caption.innerHTML : e.target.alt;
+            }
+        });
+
+        // Zamykanie modala
+        if (closeBtn) closeBtn.addEventListener('click', () => modal.style.display = "none");
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = "none";
+        });
+    }
 });
