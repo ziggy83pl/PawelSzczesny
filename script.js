@@ -11,23 +11,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Płynne przewijanie do kontaktu (Smooth Scroll)
-    const callButton = document.querySelector('.btn-main');
-    const contactSection = document.getElementById('contact');
-
-    if (callButton && contactSection) {
-        callButton.addEventListener('click', function(e) {
-            // Sprawdź czy to komputer (szerokość ekranu > 768px)
-            if (window.innerWidth > 768) {
-                e.preventDefault(); // Zablokuj dzwonienie
-                contactSection.scrollIntoView({ behavior: 'smooth' }); // Przewiń
-            }
-            // Na telefonach (ekran <= 768px) kod powyżej się nie wykona,
-            // więc zadziała domyślny href="tel:..."
-        });
-    }
-
-    // 2. Animacja pojawiania się elementów (Fade In)
+    // 1. Animacja pojawiania się elementów (Fade In)
     const observerOptions = {
         root: null, // obserwowany względem okna przeglądarki
         rootMargin: '0px',
@@ -46,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fadeElements = document.querySelectorAll('.fade-in');
     fadeElements.forEach(el => observer.observe(el));
 
-    // 3. Obsługa formularza kontaktowego (AJAX)
+    // 2. Obsługa formularza kontaktowego (AJAX)
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         // Automatyczne formatowanie numeru telefonu (XXX XXX XXX)
@@ -77,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const btn = contactForm.querySelector('button');
+            const btn = contactForm.querySelector('button[type="submit"]');
             const originalText = btn.innerText;
             btn.innerText = 'Wysyłanie...';
             btn.disabled = true;
@@ -93,8 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     telefon: contactForm.querySelector('input[name="telefon"]').value,
                     email: contactForm.querySelector('input[name="email"]').value,
                     wiadomosc: contactForm.querySelector('textarea[name="wiadomosc"]').value,
-                    _subject: "Nowe zapytanie ze strony - Paweł Szczęsny",
-                    _autoresponse: "Dziękujemy za wiadomość! Otrzymaliśmy Twoje zgłoszenie i skontaktujemy się z Tobą wkrótce."
+                    _subject: contactForm.querySelector('input[name="_subject"]').value,
+                    _autoresponse: contactForm.querySelector('input[name="_autoresponse"]').value,
+                    _captcha: "false"
                 })
             })
             .then(response => {
@@ -131,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 4. Obsługa przycisku udostępniania (Web Share API)
+    // 3. Obsługa przycisku udostępniania (Web Share API)
     const shareBtn = document.getElementById('share-btn');
     if (shareBtn) {
         shareBtn.addEventListener('click', () => {
@@ -151,14 +136,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 5. Rejestracja Service Worker (PWA / Offline)
+    // 4. Rejestracja Service Worker (PWA / Offline)
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js')
             .then(reg => console.log('Service Worker zarejestrowany:', reg))
             .catch(err => console.log('Błąd rejestracji Service Worker:', err));
     }
 
-    // 6. Obsługa instalacji PWA (Przycisk "Zainstaluj Aplikację")
+    // 5. Obsługa instalacji PWA (Przycisk "Zainstaluj Aplikację")
     const installBtn = document.getElementById('install-btn');
 
     // Jeśli zdarzenie wystąpiło przed załadowaniem DOM (np. bardzo szybkie łącze)
@@ -179,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 7. Inicjalizacja karuzeli zdjęć (Swiper.js)
+    // 6. Inicjalizacja karuzeli zdjęć (Swiper.js)
     if (typeof Swiper !== 'undefined') {
         const swiper = new Swiper('.swiper', {
             loop: true,
@@ -198,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 8. Obsługa modala (Lightbox) dla galerii
+    // 7. Obsługa modala (Lightbox) dla galerii
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('full-image');
     const captionText = document.getElementById('caption');
@@ -211,9 +196,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target.tagName === 'IMG') {
                 modal.style.display = "block";
                 modalImg.src = e.target.src;
+                modalImg.alt = e.target.alt;
                 // Pobierz podpis z sąsiedniego elementu (jeśli istnieje) lub atrybutu alt
                 const caption = e.target.nextElementSibling;
-                captionText.innerHTML = (caption && caption.classList.contains('slide-caption')) ? caption.innerHTML : e.target.alt;
+                captionText.textContent = (caption && caption.classList.contains('slide-caption')) ? caption.textContent : e.target.alt;
             }
         });
 
@@ -221,6 +207,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (closeBtn) closeBtn.addEventListener('click', () => modal.style.display = "none");
         modal.addEventListener('click', (e) => {
             if (e.target === modal) modal.style.display = "none";
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === "block") {
+                modal.style.display = "none";
+            }
         });
     }
 });

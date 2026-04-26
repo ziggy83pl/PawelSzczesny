@@ -11,9 +11,10 @@
     <meta property="og:title" content="Paweł Szczęsny - Usługi Remontowo-Ogrodowe">
     <meta property="og:description" content="Potrzebujesz fachowca? Remonty, prace ogrodowe, transport. Sprawdź moją ofertę i skontaktuj się!">
     <meta property="og:url" content="https://pawelszczesnyostroleka.pages.dev/">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1592595896551-12b371d546d5?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:image" content="https://pawelszczesnyostroleka.pages.dev/logo/pawel.png">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pl_PL">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://pawelszczesnyostroleka.pages.dev/">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="logo/fivicon.ico" type="image/x-icon">
@@ -34,6 +35,24 @@
 
     gtag('config', 'G-4N5Q4GHC2B');
 </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Paweł Szczęsny - Usługi Remontowo-Ogrodowe i Transport",
+        "url": "https://pawelszczesnyostroleka.pages.dev/",
+        "telephone": "+48515622400",
+        "email": "pawelszczesny3@gmail.com",
+        "image": "https://pawelszczesnyostroleka.pages.dev/logo/pawel.png",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ostrołęka",
+            "addressCountry": "PL"
+        },
+        "areaServed": "Ostrołęka i okolice",
+        "description": "Usługi remontowe, ogrodnicze, transportowe i wynajem garaży."
+    }
+    </script>
 </head>
 <body>
 
@@ -120,24 +139,24 @@
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 <div class="swiper-slide">
-                    <img src="logo/image1.png" alt="Realizacja budowlana">
+                    <img src="logo/image1-optimized.jpg" alt="Grzanie papy termozgrzewalnej" loading="lazy">
                     <p class="slide-caption">Grzanie papy</p>
                 </div>
                 <div class="swiper-slide">
-                    <img src="logo/image2.png" alt="Malowanie wnętrz">
+                    <img src="logo/image2-optimized.jpg" alt="Instalacja płotu" loading="lazy">
                     <p class="slide-caption">Instalacja płotu</p>
                 </div>
                 <div class="swiper-slide">
-                    <img src="logo/image3.png" alt="Transport">
+                    <img src="logo/image3-optimized.jpg" alt="Budowa ogrodzenia" loading="lazy">
                     <p class="slide-caption">Budowa ogrodzenia</p>
                 </div>
                 <div class="swiper-slide">
-                    <img src="logo/image4.png" alt="Prace ogrodowe">
-                    <p class="slide-caption">Malowanie scian</p>
+                    <img src="logo/image4-optimized.jpg" alt="Malowanie ścian" loading="lazy">
+                    <p class="slide-caption">Malowanie ścian</p>
                 </div>
                 <div class="swiper-slide">
-                    <img src="logo/image5.png" alt="Układanie podłogi">
-                    <p class="slide-caption">Zageszczanie gruntu</p>
+                    <img src="logo/image5-optimized.jpg" alt="Zagęszczanie gruntu" loading="lazy">
+                    <p class="slide-caption">Zagęszczanie gruntu</p>
                 </div>
             </div>
             <!-- If we need pagination -->
@@ -148,7 +167,7 @@
             <div class="swiper-button-next"></div>
         </div>
         <p style="font-size: 0.8rem; color: #999; margin-top: 15px;">
-            Zdjęcia mają charakter poglądowy.
+            Wybrane zdjęcia z wykonanych prac.
         </p>
     </section>
 
@@ -160,7 +179,10 @@
             <p><i class="fas fa-envelope"></i> <strong><a href="mailto:pawelszczesny3@gmail.com">pawelszczesny3@gmail.com</a></strong></p>
         </div>
 
-        <form id="contact-form" class="contact-form">
+        <form id="contact-form" class="contact-form" action="https://formsubmit.co/pawelszczesny3@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Nowe zapytanie ze strony - Paweł Szczęsny">
+            <input type="hidden" name="_autoresponse" value="Dziękujemy za wiadomość! Otrzymaliśmy Twoje zgłoszenie i skontaktujemy się z Tobą wkrótce.">
+            <input type="hidden" name="_captcha" value="false">
             <input type="text" name="imie" placeholder="Twoje imię" required>
             <input type="tel" name="telefon" placeholder="Twój telefon" required>
             <input type="email" name="email" placeholder="Twój email" required>
@@ -178,8 +200,8 @@
             </div>
         </section>
         <div class="footer-info">
-                <p>&copy; 2026 Paweł Szczęsny - Usługi Ogólnobudowlane <span style="font-size: 0.85em; opacity: 0.7;">v1.0.3</span> <span class="footer-separator">|</span></p> 
-            <p>Realizacja: <a href="https://ziggy83pl.github.io/enterprise/index.html" target="_blank" id="version-text" class="logo-tooltip" data-tooltip="Zamów profesjonalną stronę WWW">Enterprise</a></p>
+                <p>&copy; 2026 Paweł Szczęsny - Usługi Ogólnobudowlane <span style="font-size: 0.85em; opacity: 0.7;">v1.1.1</span> <span class="footer-separator">|</span></p> 
+            <p>Realizacja: <a href="https://ziggy83pl.github.io/enterprise/index.html" target="_blank" rel="noopener noreferrer" id="version-text" class="logo-tooltip" data-tooltip="Zamów profesjonalną stronę WWW">Enterprise</a></p>
         </div>
         <button id="install-btn" class="btn-install" style="display: none;"><i class="fas fa-download"></i> Zainstaluj Aplikację</button>
     </div>
@@ -187,8 +209,8 @@
 
 <!-- Modal do powiększania zdjęć -->
 <div id="image-modal" class="image-modal">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="full-image">
+    <button type="button" class="close-modal" aria-label="Zamknij podgląd zdjęcia">&times;</button>
+    <img class="modal-content" id="full-image" alt="">
     <div id="caption"></div>
 </div>
 
@@ -197,8 +219,7 @@
 <script src="script.js"></script>
 
 <!-- Globalne skrypty -->
-<script src="https://ziggy83pl.github.io/zasoby/portfolio-logos.js" defer></script>
-<script src="https://ziggy83pl.github.io/zasoby/magnifier.js" defer></script>
+<script src="portfolio-logos.js" defer></script>
+<script src="magnifier.js" defer></script>
 </body>
-
 </html>

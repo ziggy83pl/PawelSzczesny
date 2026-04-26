@@ -1,26 +1,28 @@
-const CACHE_NAME = 'pawel-v5';
+const CACHE_NAME = 'pawel-v6';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
     './style.css',
     './script.js',
+    './portfolio-logos.js',
+    './magnifier.js',
     './manifest.json',
-    './logo/prodom.webp',
-    './logo/rentmaster.png',
-    './logo/doners_kebab.png',
     './logo/fivicon.ico',
     './logo/pawel.png',
-    './logo/image1.png',
-    './logo/image2.png',
-    './logo/image3.png',
-    './logo/image4.png',
-    './logo/image5.png',
+    './logo/image1-optimized.jpg',
+    './logo/image2-optimized.jpg',
+    './logo/image3-optimized.jpg',
+    './logo/image4-optimized.jpg',
+    './logo/image5-optimized.jpg',
 ];
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then((cache) => cache.addAll(ASSETS_TO_CACHE))
+            .then((cache) => Promise.allSettled(
+                ASSETS_TO_CACHE.map((asset) => cache.add(asset))
+            ))
+            .then(() => self.skipWaiting())
     );
 });
 
@@ -46,7 +48,7 @@ self.addEventListener('fetch', (event) => {
                     return response;
                 }
                 return fetch(event.request).then((networkResponse) => {
-                    if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic' && networkResponse.type !== 'cors' && networkResponse.type !== 'opaque') {
+                    if (!networkResponse || networkResponse.status !== 200 || !['basic', 'cors', 'opaque'].includes(networkResponse.type)) {
                         return networkResponse;
                     }
                     const responseToCache = networkResponse.clone();
