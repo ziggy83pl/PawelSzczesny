@@ -1,11 +1,9 @@
-const CACHE_NAME = 'pawel-v6';
+const CACHE_NAME = 'pawel-v7';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
     './style.css',
     './script.js',
-    './portfolio-logos.js',
-    './magnifier.js',
     './manifest.json',
     './logo/fivicon.ico',
     './logo/pawel.png',
@@ -14,6 +12,9 @@ const ASSETS_TO_CACHE = [
     './logo/image3-optimized.jpg',
     './logo/image4-optimized.jpg',
     './logo/image5-optimized.jpg',
+    './logo/image6-optimized.webp',
+    './logo/image7-optimized.webp',
+    './logo/image8-optimized.webp',
 ];
 
 self.addEventListener('install', (event) => {
