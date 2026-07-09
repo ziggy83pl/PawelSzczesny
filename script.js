@@ -34,16 +34,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const shareBtn = document.getElementById('share-btn');
     if (shareBtn) {
         shareBtn.addEventListener('click', () => {
+            const productionUrl = 'https://pawelszczesnyostroleka.pages.dev/';
             const shareData = {
                 title: document.title,
                 text: 'Polecam usługi Pawła Szczęsnego - solidnie i terminowo!',
-                url: window.location.href
+                url: productionUrl
             };
 
             if (navigator.share) {
                 navigator.share(shareData).catch(console.error);
             } else {
-                navigator.clipboard.writeText(window.location.href)
+                navigator.clipboard.writeText(productionUrl)
                     .then(() => alert('Link do strony został skopiowany do schowka!'))
                     .catch(() => alert('Nie udało się skopiować linku.'));
             }
