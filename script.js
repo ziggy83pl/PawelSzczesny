@@ -1,11 +1,9 @@
-// Zmienna globalna dla zdarzenia instalacji PWA - musi być na zewnątrz
+// Zmienna globalna dla zdarzenia instalacji PWA
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Zapobiegaj automatycznemu pojawieniu się mini-paska
     e.preventDefault();
     deferredPrompt = e;
-    // Spróbuj pokazać przycisk od razu, jeśli element już istnieje
     const installBtn = document.getElementById('install-btn');
     if (installBtn) installBtn.style.display = 'inline-block';
 });
@@ -13,16 +11,16 @@ window.addEventListener('beforeinstallprompt', (e) => {
 document.addEventListener('DOMContentLoaded', function() {
     // 1. Animacja pojawiania się elementów (Fade In)
     const observerOptions = {
-        root: null, // obserwowany względem okna przeglądarki
+        root: null,
         rootMargin: '0px',
-        threshold: 0.1 // element musi być widoczny w 10% żeby odpalić animację
+        threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // animuj tylko raz
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -30,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fadeElements = document.querySelectorAll('.fade-in');
     fadeElements.forEach(el => observer.observe(el));
 
-    // 2. Obsługa formularza kontaktowego (AJAX)
+    // 2. Obsługa formularza kontaktowego (AJAX z fallbackiem)
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         // Automatyczne formatowanie numeru telefonu (XXX XXX XXX)
@@ -54,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             const telefonInput = contactForm.querySelector('input[name="telefon"]');
-            const telefonRaw = telefonInput.value.replace(/\D/g, ''); // Usuwa spacje i myślniki
+            const telefonRaw = telefonInput.value.replace(/\D/g, '');
             
             if (telefonRaw.length !== 9) {
                 alert("Numer telefonu musi składać się dokładnie z 9 cyfr.");
@@ -105,13 +103,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         btn.disabled = false;
                     });
                 } else {
-                    alert("Wystąpił problem z wysłaniem formularza. Spróbuj ponownie później.");
-                    throw new Error('Błąd wysyłki');
+                    throw new Error('Response not OK');
                 }
-            }).catch(error => {
-                alert("Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.");
-                btn.innerText = originalText;
-                btn.disabled = false;
+            })
+            .catch(error => {
+                console.warn("Wysyłka AJAX nie powiodła się (prawdopodobnie uruchomienie z pliku lokalnego). Przełączanie na klasyczne wysyłanie...", error);
+                // W razie błędu wysyłamy formularz klasyczną metodą
+                contactForm.submit();
             });
         });
     }
@@ -145,8 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 5. Obsługa instalacji PWA (Przycisk "Zainstaluj Aplikację")
     const installBtn = document.getElementById('install-btn');
-
-    // Jeśli zdarzenie wystąpiło przed załadowaniem DOM (np. bardzo szybkie łącze)
     if (deferredPrompt && installBtn) {
         installBtn.style.display = 'inline-block';
     }
@@ -154,9 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (installBtn) {
         installBtn.addEventListener('click', (e) => {
             if (deferredPrompt) {
-                // Pokaż monit instalacji
                 deferredPrompt.prompt();
-                // Poczekaj na decyzję użytkownika (opcjonalne logowanie)
                 deferredPrompt.userChoice.then((choiceResult) => {
                     deferredPrompt = null;
                 });
@@ -191,19 +185,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const swiperWrapper = document.querySelector('.swiper-wrapper');
 
     if (modal && swiperWrapper) {
-        // Delegacja zdarzeń - obsługuje też slajdy sklonowane przez pętlę Swipera
         swiperWrapper.addEventListener('click', function(e) {
             if (e.target.tagName === 'IMG') {
                 modal.style.display = "block";
                 modalImg.src = e.target.src;
                 modalImg.alt = e.target.alt;
-                // Pobierz podpis z sąsiedniego elementu (jeśli istnieje) lub atrybutu alt
                 const caption = e.target.nextElementSibling;
                 captionText.textContent = (caption && caption.classList.contains('slide-caption')) ? caption.textContent : e.target.alt;
             }
         });
 
-        // Zamykanie modala
         if (closeBtn) closeBtn.addEventListener('click', () => modal.style.display = "none");
         modal.addEventListener('click', (e) => {
             if (e.target === modal) modal.style.display = "none";
@@ -213,5 +204,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 modal.style.display = "none";
             }
         });
+    }
+
+    // 8. Dynamiczny nagłówek i menu mobilne
+    const navToggle = document.getElementById('nav-toggle-btn');
+    const navLinksMenu = document.getElementById('nav-links-menu');
+    const navBar = document.querySelector('.main-nav');
+
+    if (navToggle && navLinksMenu) {
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinksMenu.classList.toggle('active');
+        });
+
+        const links = navLinksMenu.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navLinksMenu.classList.remove('active');
+            });
+        });
+    }
+
+    if (navBar) {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                navBar.classList.add('scrolled');
+            } else {
+                navBar.classList.remove('scrolled');
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
     }
 });

@@ -6,7 +6,7 @@
     <title>Paweł Szczęsny - Usługi Remontowo-Ogrodowe i Transport</title>
     
     <meta name="description" content="Profesjonalne usługi remontowe, ogrodnicze i transportowe. Paweł Szczęsny - solidnie, terminowo i dokładnie. Sprawdź ofertę!">
-    <meta name="theme-color" content="#2c3e50">
+    <meta name="theme-color" content="#1e272e">
 
     <meta property="og:title" content="Paweł Szczęsny - Usługi Remontowo-Ogrodowe">
     <meta property="og:description" content="Potrzebujesz fachowca? Remonty, prace ogrodowe, transport. Sprawdź moją ofertę i skontaktuj się!">
@@ -27,14 +27,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4N5Q4GHC2B"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N5Q4GHC2B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    gtag('config', 'G-4N5Q4GHC2B');
-</script>
+        gtag('config', 'G-4N5Q4GHC2B');
+    </script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -56,6 +56,24 @@
 </head>
 <body>
 
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="#" class="nav-logo">PAWEŁ SZCZĘSNY</a>
+        <button class="nav-toggle" aria-label="Menu nawigacyjne" id="nav-toggle-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul class="nav-links" id="nav-links-menu">
+            <li><a href="#services">Oferta</a></li>
+            <li><a href="#why-us">Dlaczego my</a></li>
+            <li><a href="#gallery">Realizacje</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+        <a href="tel:+48515622400" class="nav-phone"><i class="fas fa-phone-alt"></i> 515 622 400</a>
+    </div>
+</nav>
+
 <header class="hero">
     <div class="container">
         <h1>PAWEŁ SZCZĘSNY</h1>
@@ -72,7 +90,7 @@
 </section>
 
 <main class="container">
-    <section class="grid">
+    <section id="services" class="grid">
         <div class="card fade-in">
             <h3>🏠 Remonty i Wnętrza</h3>
             <ul>
@@ -105,7 +123,7 @@
         </div>
     </section>
 
-    <section class="why-us fade-in">
+    <section id="why-us" class="why-us fade-in">
         <h2>Dlaczego my?</h2>
         <div class="features-grid">
             <div class="feature-item">
@@ -131,7 +149,7 @@
         </div>
     </section>
 
-    <section class="gallery-section fade-in">
+    <section id="gallery" class="gallery-section fade-in">
         <h2>Nasze Realizacje</h2>
         <!-- Slider main container -->
         <div class="swiper">
@@ -158,6 +176,18 @@
                     <img src="logo/image5-optimized.jpg" alt="Zagęszczanie gruntu" loading="lazy">
                     <p class="slide-caption">Zagęszczanie gruntu</p>
                 </div>
+                <div class="swiper-slide">
+                    <img src="logo/image6-optimized.webp" alt="Prace ogólnobudowlane" loading="lazy">
+                    <p class="slide-caption">Prace ogólnobudowlane</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="logo/image7-optimized.webp" alt="Prace remontowe i wykończeniowe" loading="lazy">
+                    <p class="slide-caption">Prace wykończeniowe</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="logo/image8-optimized.webp" alt="Prace transportowe i porządkowe" loading="lazy">
+                    <p class="slide-caption">Usługi transportowe</p>
+                </div>
             </div>
             <!-- If we need pagination -->
             <div class="swiper-pagination"></div>
@@ -173,7 +203,7 @@
 
     <section id="contact" class="contact-box fade-in">
         <h2>Zapraszam do kontaktu!</h2>
-        <p>Indywidualne podejście do klienta i rzetelna wycena.</p>
+        <p style="margin-bottom: 25px;">Indywidualne podejście do klienta i rzetelna wycena.</p>
         <div class="details">
             <p><i class="fas fa-phone"></i> <strong><a href="tel:+48515622400">515 622 400</a></strong></p>
             <p><i class="fas fa-envelope"></i> <strong><a href="mailto:pawelszczesny3@gmail.com">pawelszczesny3@gmail.com</a></strong></p>
@@ -183,10 +213,24 @@
             <input type="hidden" name="_subject" value="Nowe zapytanie ze strony - Paweł Szczęsny">
             <input type="hidden" name="_autoresponse" value="Dziękujemy za wiadomość! Otrzymaliśmy Twoje zgłoszenie i skontaktujemy się z Tobą wkrótce.">
             <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="imie" placeholder="Twoje imię" required>
-            <input type="tel" name="telefon" placeholder="Twój telefon" required>
-            <input type="email" name="email" placeholder="Twój email" required>
-            <textarea name="wiadomosc" placeholder="Treść wiadomości" rows="5" required></textarea>
+            
+            <div class="form-group">
+                <input type="text" id="imie" name="imie" placeholder=" " required>
+                <label for="imie">Twoje imię</label>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="telefon" name="telefon" placeholder=" " required>
+                <label for="telefon">Twój telefon</label>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder=" " required>
+                <label for="email">Twój email</label>
+            </div>
+            <div class="form-group">
+                <textarea id="wiadomosc" name="wiadomosc" placeholder=" " rows="5" required></textarea>
+                <label for="wiadomosc">Treść wiadomości</label>
+            </div>
+            
             <button type="submit" class="btn-main">Wyślij wiadomość</button>
         </form>
     </section>
@@ -195,12 +239,12 @@
 <footer>
     <div class="container" style="text-align: center; padding: 20px 0;">
         <section class="partners-section fade-in" style="margin-bottom: 20px;">
-            <div id="global-trusted-logos">
-                <!-- Loga ładowane przez portfolio-logos.js -->
+            <div id="global-trusted-logos" style="margin-bottom: 30px;">
+                <h2 class="logo-header" data-lang="portfolio_title">Wspieramy i Polecamy</h2>
             </div>
         </section>
         <div class="footer-info">
-                <p>&copy; 2026 Paweł Szczęsny - Usługi Ogólnobudowlane <span style="font-size: 0.85em; opacity: 0.7;">v1.1.1</span> <span class="footer-separator">|</span></p> 
+            <p>&copy; 2026 Paweł Szczęsny - Usługi Ogólnobudowlane <span style="font-size: 0.85em; opacity: 0.7;">v1.2.0</span> <span class="footer-separator">|</span></p> 
             <p>Realizacja: <a href="https://ziggy83pl.github.io/enterprise/index.html" target="_blank" rel="noopener noreferrer" id="version-text" class="logo-tooltip" data-tooltip="Zamów profesjonalną stronę WWW">Enterprise</a></p>
         </div>
         <button id="install-btn" class="btn-install" style="display: none;"><i class="fas fa-download"></i> Zainstaluj Aplikację</button>
@@ -219,7 +263,7 @@
 <script src="script.js"></script>
 
 <!-- Globalne skrypty -->
-<script src="portfolio-logos.js" defer></script>
-<script src="magnifier.js" defer></script>
+<script src="https://ziggy83pl.github.io/zasoby/portfolio-logos.js" defer></script>
+<script src="https://ziggy83pl.github.io/zasoby/magnifier.js" defer></script>
 </body>
 </html>
